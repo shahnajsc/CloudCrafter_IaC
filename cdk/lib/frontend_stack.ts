@@ -27,7 +27,7 @@ export class FrontendStack extends Stack {
 		super(scope, id, props);
 
 		// Build the frontend locally before uploading.
-		execSync("npm run build", { cwd: "../frontend", stdio: "inherit" });
+		execSync("npm ci && npm run build", { cwd: "../frontend", stdio: "inherit" });
 
 		// Create an S3 bucket(private) to store compiled frontend assets.
 		const siteBucket = new s3.Bucket(this, "CloudCrafterFrontendBucket", {
