@@ -25,7 +25,7 @@ export class NetworkingStack extends Stack {
 
 		// Create VPC with one AZ and one NAT Gateway (cost-efficient + works with Prisma).
 		this.vpc = new ec2.Vpc(this, "CloudCrafterVPC", {
-			maxAzs: 1,		// Single Availability Zone to reduce cost in demo.
+			maxAzs: 2,
 			natGateways: 1,	// Allows private ECS tasks to reach the internet.
 			subnetConfiguration: [
 			{
