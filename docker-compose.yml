@@ -1,0 +1,50 @@
+services:
+  database:
+    image: postgres:16
+    container_name: cloudcrafter_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    volumes:
+      - cc_db_data:/var/lib/postgresql/data
+    networks:
+      - ccnet
+
+  backend:
+    container_name: cloudcrafter_backend
+    restart: no # change it to 'always' when in production
+    env_file:
+      - .env
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    networks:
+      - ccnet
+
+networks:
+  ccnet:
+    name: ccnet
+    driver: bridge
+
+volumes:
+  cc_db_data:
+
+
+
