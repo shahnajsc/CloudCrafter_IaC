@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+
+    // Tells TypeScript where .ts source files live.
+    "rootDir": "src",
+    // Compiled .js files will be written here.
+    "outDir": "dist",
+
+    // Ensures output JS uses modern syntax that Node 18+ understands.
+    "target": "ES2020",
+    // Uses Node’s standard require() system (best for Express and most AWS tools).
+    "module": "CommonJS",
+    // Enables modern JavaScript features and typings (like Promises, async/await).
+    "lib": ["ES2020"],
+    // Adds Node’s built-in type definitions (fs, path, etc.).
+    "types": ["node"],
+
+    // Enables all strict type checks (best practice for production).
+    "strict": true,
+    // Speeds up compilation by skipping type checking in dependencies.
+    "skipLibCheck": true,
+
+    // Lets import CommonJS modules (like import express from "express") without errors.
+    "esModuleInterop": true,
+
+    // Allows importing JSON files directly (import data from "./config.json").
+    "resolveJsonModule": true,
+    // Generates .map files to help debug the original TypeScript in Node debuggers.
+    "sourceMap": true
+  },
+  // Limits compilation to files inside src folder.
+  "include": ["src", "prisma"]
+}
