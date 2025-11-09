@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+//   output   = "../src/generated/prisma"
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model news {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  headline  String
+  intro     String
+  details   String
+  createdAt DateTime @default(now())
+}
+
+model topcompany {
+  id                 Int      @id @default(autoincrement())
+  companyName        String
+  stockSym           String
+  capital            Int
+  shareVolume        Int
+  price              Float
+  dividend           Float
+  dividendYield      Float
+  sector             String
+  country            String
+  createdAt          DateTime @default(now())
+}
+
+model topshare {
+  id            Int      @id @default(autoincrement())
+  companyName   String
+  price         Float
+  marketCapital Float
+  createdAt     DateTime @default(now())
+}
