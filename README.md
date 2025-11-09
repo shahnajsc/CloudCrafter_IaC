@@ -104,10 +104,10 @@ brew install --cask docker       # Docker desktop (macOS)
 ## Deploy
 Git clone the repository:
 ```bash
-git clone https://github.com/shahnajsc/Assignment3_CloudCrafter.git
+git clone https://github.com/shahnajsc/CloudCrafter_IaC.git
 ```
 ```bash
-cd Assignment3_CloudCrafter/cdk
+cd CloudCrafter_IaC/cdk
 
 npm install
 ```
