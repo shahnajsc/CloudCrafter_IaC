@@ -29,7 +29,7 @@ npx prisma generate
 echo "Prisma client generated."
 
 # DB migration
-npx prisma migrate dev --name init
+npx prisma migrate deploy
 echo "DB migration done."
 
 # Data seeding
@@ -37,5 +37,5 @@ npm run db:seed || echo "Seed failed or already applied — continuing."
 echo "Data seeding done."
 
 # Starting backend
-npm run dev
+exec node dist/src/app.js
 echo "Backend running."

@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // Simple test route ********'
-//app.get("/", (_req, res) => res.send("CloudCrafter backend is running!")); ******
+app.get("/", (_req, res) => res.send("CloudCrafter backend is running!"));
 
 // Register all /api routes
 app.use("/api", api);

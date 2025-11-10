@@ -2,7 +2,7 @@
   "compilerOptions": {
 
     // Tells TypeScript where .ts source files live.
-    "rootDir": "src",
+    "rootDir": "./",
     // Compiled .js files will be written here.
     "outDir": "dist",
 
@@ -29,5 +29,5 @@
     "sourceMap": true
   },
   // Limits compilation to files inside src folder.
-  "include": ["src", "prisma"]
+  "include": ["src", "prisma/seed.ts"]
 }
